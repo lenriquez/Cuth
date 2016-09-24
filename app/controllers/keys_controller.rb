@@ -46,6 +46,6 @@ class KeysController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def key_params
-      params.require(:key).permit(:title, :name, :url, :password, :comments)
+      params.permit(:title, :name, :url, :password, :comments)
     end
 end
