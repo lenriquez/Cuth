@@ -2,6 +2,14 @@ require 'rails_helper'
 require 'json'
 
 describe "CRUD for keys" do
+  # Delete all keys before start
+  before(:each) do
+    get '/api/v1/keys'
+    JSON.parse(response.body).each do |key|
+      delete "/api/v1/keys/#{key['_id']['$oid']}"
+    end
+  end
+
   it "Test the  create and delete " do
     # Variables needed
     id = ""
@@ -15,7 +23,7 @@ describe "CRUD for keys" do
     post "/api/v1/keys",
     params: {
       title: 'Gmail',
-      user: 'felipe096',
+      name: 'felipe096',
       url: 'www.gmail.com',
       password: '12456',
       comments: 'N/A'
@@ -36,6 +44,5 @@ describe "CRUD for keys" do
     get '/api/v1/keys'
     expect(response).to be_success
     expect(JSON.parse(response.body).size).to eq(count)
-
   end
 end

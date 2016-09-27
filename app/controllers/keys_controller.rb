@@ -1,12 +1,9 @@
 class KeysController < ApplicationController
   before_action :set_key, only: [:show, :update, :destroy]
-  include KeyHelper
 
   # GET /keys
   def index
     @keys = Key.all
-    # Decrypt the password
-    @keys.each { |key| key['password'] = decrypt(key['password']) }
 
     render json: @keys
   end
@@ -49,7 +46,6 @@ class KeysController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def key_params
-      params[:password] = encrypt(params[:password]) if params[:password]
       params.permit(:title, :name, :url, :password, :comments)
     end
 end
