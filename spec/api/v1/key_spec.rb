@@ -1,5 +1,4 @@
 require 'rails_helper'
-require 'json'
 
 describe "CRUD for keys" do
   # Delete all keys before start
