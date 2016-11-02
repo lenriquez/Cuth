@@ -18,6 +18,10 @@ gem 'puma', '~> 3.0'
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 # gem 'rack-cors'
 
+# Auth0 necessary Gems
+gem 'omniauth', '~> 1.3.1'
+gem 'omniauth-auth0', '~> 1.4.2'
+
 gem 'mongoid',  git: 'https://github.com/mongodb/mongoid.git'#'~>6.0.0'
 gem 'bson_ext', '~>1.5.1'
 
